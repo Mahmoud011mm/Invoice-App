@@ -1,12 +1,73 @@
 <form [formGroup]="invoiceForm" (ngSubmit)="saveInvoice()">
+    <mat-card>
+        <mat-card-header>
+            <h1>{{ title }}</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field class="mat-half-width">
+                <mat-label>Invoice NO</mat-label>
+                <input matInput formControlName="invoiceno" >
+            </mat-form-field>
+            <mat-form-field class="mat-half-width">
+                <mat-label>Invoice Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="invoicedate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="mat-half-width">
+                <mat-label>Customer*</mat-label>
+                <input matInput  >
+                <mat-select formControlName="customerid"></mat-select>
+            </mat-form-field>
+            <mat-form-field class="mat-half-width">
+                <mat-label>Tax</mat-label>
+                <input matInput  >
+                <mat-select formControlName="taxcode"></mat-select>
+            </mat-form-field>
+            <mat-form-field class="mat-full-width">
+                <mat-label>Address</mat-label>
+                <textarea matInput formControlName="address" ></textarea>
+            </mat-form-field>
 
+            <mat-card style="width: 99%; margin: 1px;">
+                <mat-card-header>Product Section</mat-card-header>
+                <mat-card-content>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">s1.No</th>
+                                <th style="width: 40%;">Product</th>
+                                <th style="width: 15%;">Qty</th>
+                                <th style="width: 15%;">Price</th>
+                                <th style="width: 15%;">Total</th>
+                                <th style="width: 10%;">Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card style="width: 99%;margin:1px;">
+                <mat-card-content>
+                    <mat-list>
+                        <mat-list-item>
+                            Summary Total: <b>0.00</b>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            Summary Tax: <b>0.00</b>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            Summary NET Total: <b>0.00</b>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+            <a mat-raised-button color="accent" (click)="backToInvoce()">Cancel</a>
+        </mat-card-actions>
+    </mat-card>
 </form>
-<mat-card>
-    <mat-card-header>{{ title }}</mat-card-header>
-    <mat-card-content>
-
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Save</button>
-    </mat-card-actions>
-</mat-card>
