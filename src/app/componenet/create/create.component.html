@@ -26,7 +26,7 @@
             <mat-form-field class="mat-half-width">
                 <mat-label>Tax</mat-label>
                 <input matInput  >
-                <mat-select formControlName="taxcode">
+                <mat-select formControlName="taxcode" (selectionChange)="taxChange($event.value)">
                     @for (item of taxList; track item) {
                         <mat-option [value]="item.id" >{{ item.id }}</mat-option>
                     }
@@ -79,7 +79,7 @@
                                     </mat-form-field>
                                 </td>
                                 <td>
-                                    <a mat-raised-button color="accent"> Delete</a>
+                                    <a mat-raised-button color="accent" (click)="deleteProduct(i)"> Delete</a>
                                 </td>
                             </tr>
                         </tbody>
